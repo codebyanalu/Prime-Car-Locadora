@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Car - Locadora de Veículos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), 
+                        url('https://pemavel.com.br/wp-content/uploads/2024/08/imagick_convert.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            letter-spacing: 3px;
+        }
+        .hero p {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            font-weight: 300;
+        }
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-style: italic;
+            margin-bottom: 3rem;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #216963, #216963);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;}
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #14c2e0, #0d2250);
+        }
+        .main-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        .content-text h2 {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        .content-text p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 20px;
+            text-align: justify;
+            line-height: 1.8;
+        }
+        .car-image {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .car-image:hover {
+            transform: scale(1.05);
+        }
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        .feature-card {
+            text-align: center;
+            padding: 40px 30px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #2e3baf 100%);
+            color: white;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .feature-card p {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        .team {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #16bec4 0%, #60a5dd 100%);
+        }
+        .team h3 {
+            font-size: 2.5rem;
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+        .team-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            list-style: none;
+        }
+        .team-member {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            transition: all 0.3s ease;
+            min-width: 250px;
+            text-align: center;
+        }
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            font-size: 1.1rem;
+        }
+        footer p {
+            margin: 0;
+            font-weight: 300;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .hero p {
+                font-size: 1.3rem;
+            }
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .content-text h2 {
+                font-size: 2.5rem;
+            }
+            .team-list {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .container {
+                padding: 0 15px;
+            }
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero parallax">
+        <div class="hero-content">
+            <h1>PRIME CAR</h1>
+            <p>Locadora de Veículos de Goiânia</p>
+            <div class="tagline">Onde você tem comodidade de alugar via web e presencial</div>
+            <a href="#main" class="cta-button">Conheça Nossa Meta</a>
+        </div>
+    </section>
+    <section id="main" class="main-section">
+        <div class="container">
+            <div class="content-grid">
+                <div class="content-text">
+                    <h2>Bem-vindo à Prime Car</h2>
+                    <p>A Prime Car é uma locadora de veículos que oferece as melhores opções para seus clientes. Com uma frota pequena, porém moderna e visando proporcionar o melhor para o cliente. Sempre prezando pela qualidade, liberdade e segurança.</p>
+                    <p>Nossa missão é tornar sua experiência de locação de veículos a mais simples e agradável possível, com preços competitivos e um atendimento personalizado. O nosso objetivo é alcançar a satisfação dos clientes.</p>                   
+                    <p>Na Prime Car, você encontra veículos dos mais variados modelos e categorias. Todos os nossos carros passam por rigorosa manutenção e revisão periódica para garantir sua total segurança e satisfação.</p>
+                </div>                
+                <a href="https://ibb.co/ZzWj7m96"><img src="https://i.ibb.co/xqJkdHZS/img-01.jpg" alt="img-01" border="0"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="features">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; color: #2c3e50; margin-bottom: 20px;">Nossos Diferenciais</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🚗</span>
+                    <h3>Frota Moderna</h3>
+                    <p>Veículos novos e bem conservados, com manutenção rigorosa e revisões periódicas.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🔒</span>
+                    <h3>Segurança Total</h3>
+                    <p>Todos os veículos possuem seguro completo e assistência 24 horas.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">💰</span>
+                    <h3>Preços Competitivos</h3>
+                    <p>Os melhores preços do mercado com condições especiais para locações prolongadas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="team">
+        <div class="container">
+            <h3>Desenvolvido por:</h3>
+            <ul class="team-list">
+                <li class="team-member">Ana Luiza Neres S. Oliveira</li>
+                <li class="team-member">Rafael Henrique Ribeiro Coelho</li>
+                <li class="team-member">André Felipe de Aquino Oliveira</li>
+            </ul>
+        </div>
+    </section>
+    <footer>
+        <p>Telefone: Ana Luiza (62) 9 9231-6254 / Rafael Ribeiro (62) 9 9536-0492 / André Oliveira (62) 9 9350-8130.</p>
+    </footer>
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out';
+                }
+            });
+        });
+        document.querySelectorAll('.feature-card, .team-member').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
